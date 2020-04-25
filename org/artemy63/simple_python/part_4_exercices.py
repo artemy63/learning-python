@@ -1,24 +1,18 @@
 # coding=utf-8
-number_list_1 = [3, 2, 1, 0]
-print(number_list_1)
+print([3, 2, 1, 0])
 print('---')
-
-number_list_2 = list(range(3, -1, -1))
-print(number_list_2)
+print(list(range(3, -1, -1)))
 print('-----')
 
 # создать список, который содержит нечетные числа в диапазоне range(10).
-even_numbers = [number for number in range(10) if number % 2 == 1]
-print(even_numbers)
+print([number for number in range(10) if number % 2 == 1])
 print('-----')
 
 # создать словарь используя вызов range(10), чтобы получить ключи, и возведите их в квадрат, чтобы получить их значения.
-dict_ex = {key: key*key for key in range(12) if key % 2 == 1}
-print(dict_ex)
+print({key: key * key for key in range(10) if key % 2 == 1})
 print('-----')
 
-set_ex = {key for key in range(12) if key % 2 == 0}
-print(set_ex)
+print({key for key in range(12) if key % 2 == 0})
 print('-----')
 
 
@@ -29,8 +23,8 @@ def gen_ex(start=0, end=10, step=1):
         start += step
 
 
-gen_ex_list = list(gen_ex(0, 12))
-print(gen_ex_list)
+for gen_elem in gen_ex(0, 12):
+    print('generator gives me ', gen_elem)
 print('-----')
 
 
@@ -58,9 +52,9 @@ print('------')
 titles = ['Creature of Habit', 'Crewel Fate']
 plots = ['A nun turns into a monster', 'A haunted yarn shop']
 
-kortezh_ex = [item for item in zip(titles, plots)]
-print(kortezh_ex)
+movies = [item for item in zip(titles, plots)]
+print(movies)
 print('-----')
 
-dict_ex = {key: item for key, item in zip(titles, plots)}
-print(dict_ex)
+movies = {key: item for key, item in zip(titles, plots)}
+print(movies)

@@ -113,3 +113,56 @@ def edit_story_func(word):
 edit_story(['thud', 'meow', 'thud', 'hiss'], edit_story_func)
 print('the same with lambda')
 edit_story(['thud', 'meow', 'thud', 'hiss'], lambda word: word.capitalize() + '!')
+print('-------------')
+
+
+# decorator
+def document_it(func):
+    def inner_func(*args, **kwargs):
+        print('Running function ', func.__name__)
+        print('Positional arguments ', args)
+        print('Keyword arguments ', kwargs)
+        result = func(*args, **kwargs)
+        print('Result ', result)
+        return result
+    return inner_func
+
+
+@document_it
+def document_me(a, b):
+    return a + b
+
+
+document_me(3, b=42)
+print('-------------')
+
+
+# if there are some decorators first will be applied nearest to function and step by step above
+def sum_decorator(func):
+    def inner_func(*args, **kwargs):
+        result = func(*args, **kwargs)
+        return result + 42
+    return inner_func
+
+
+def multiply_decorator(func):
+    def inner_func(*args, **kwargs):
+        result = func(*args, **kwargs)
+        return result * 42
+    return inner_func
+
+
+@multiply_decorator
+@sum_decorator
+def decore_me_sum_multiply(a, b):
+    return a + b
+
+
+@sum_decorator
+@multiply_decorator
+def decore_me_multiply_sum(a, b):
+    return a + b
+
+
+print('decore_me_sum_multiply ', decore_me_sum_multiply(3, 4))
+print('decore_me_multiply_sum ', decore_me_multiply_sum(3, 4))
