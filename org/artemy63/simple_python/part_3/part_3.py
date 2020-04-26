@@ -36,12 +36,12 @@ print(mutable_list)
 
 # deletion of element by index
 del mutable_list[0]
-print mutable_list
+print(mutable_list)
 
 # deletion of element by value
 mutable_list.append("6th")
 mutable_list.remove("6th")
-print mutable_list
+print(mutable_list)
 
 # get and delete element simultaneously
 print("deleted last", mutable_list.pop())
